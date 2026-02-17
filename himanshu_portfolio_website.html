@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Himanshu Singh | Senior Data Engineer | GCP & Azure Certified</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Himanshu Singh - Senior Data Engineer specializing in GCP, Azure, BigQuery, Spark, and large-scale cloud data architecture.">
+    <meta name="keywords" content="Senior Data Engineer, GCP Architect, Azure Fabric, BigQuery, Spark, Cloud Migration">
+    <meta name="author" content="Himanshu Singh">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Himanshu Singh | Senior Data Engineer">
+    <meta property="og:description" content="Multi-Cloud Certified Data Engineer | GCP & Azure">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        /* Scroll Progress Bar */
+
+        /* Certification Mini Timeline */
+        .cert-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            padding-left: 20px;
+        }
+
+        .cert-line {
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #38bdf8, #0078D4);
+            opacity: 0.4;
+        }
+
+        .cert-item {
+            display: grid;
+            grid-template-columns: 60px 20px 1fr;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .cert-year {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .cert-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px rgba(56,189,248,0.6);
+            z-index: 1;
+        }
+
+        .cert-dot.azure {
+            background: #0078D4;
+            box-shadow: 0 0 10px rgba(0,120,212,0.6);
+        }
+
+        .cert-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg,#38bdf8,#818cf8);
+            z-index: 2000;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #0b1120;
+            color: #f1f5f9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            background: rgba(15, 23, 42, 0.55);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover { color: #38bdf8; }
+
+        header {
+            padding: 110px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg,#ffffff,#94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        header::before {
+            content:"";
+            position:absolute;
+            top:40px;
+            left:50%;
+            transform:translateX(-50%);
+            width:400px;
+            height:400px;
+            background:radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+            filter:blur(80px);
+            z-index:-1;
+            animation: glowMove 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from { transform:translateX(-50%) scale(1); }
+            to { transform:translateX(-50%) scale(1.2); }
+        }
+
+        header p { color: #94a3b8; margin: 4px 0; }
+
+        .badges {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 10px 18px;
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-number {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 6px;
+            color: #38bdf8;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cert-badge:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 18px rgba(129,140,248,0.5);
+        }
+
+        section {
+            padding: 22px 12% 16px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .card {
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+        }
+
+        .highlight-card {
+            animation: highlightPulse 1.8s ease-in-out 0s 2;
+        }
+
+        /* Timeline Experience */
+        .timeline {
+            position: relative;
+            margin-top: 20px;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #38bdf8, transparent);
+            opacity: 0.4;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 12px rgba(56,189,248,0.6);
+        }
+
+        .experience-card {
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #38bdf8;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .role {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .impact-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 12px 0;
+        }
+
+        .impact-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(56,189,248,0.15);
+            border: 1px solid rgba(56,189,248,0.35);
+        }
+
+        .current-badge {
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            border-radius: 10px;
+            background: rgba(34,197,94,0.2);
+            border: 1px solid rgba(34,197,94,0.5);
+            color: #22C55E;
+            margin-left: 10px;
+        }
+
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 0 rgba(0,174,239,0.0); }
+            50% { box-shadow: 0 0 30px rgba(0,174,239,0.7); }
+            100% { box-shadow: 0 0 0 rgba(0,174,239,0.0); }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-category {
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        /* Color-coded Categories */
+        .cloud-category {
+            background: linear-gradient(145deg, rgba(66,133,244,0.15), rgba(66,133,244,0.05));
+        }
+
+        .data-category {
+            background: linear-gradient(145deg, rgba(249,115,22,0.15), rgba(249,115,22,0.05));
+        }
+
+        .programming-category {
+            background: linear-gradient(145deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05));
+        }
+
+        .devops-category {
+            background: linear-gradient(145deg, rgba(168,85,247,0.15), rgba(168,85,247,0.05));
+        }
+
+        .skill-category:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+        }
+
+        .skill-category h4 {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cloud-category h4 { color: #4285F4; }
+        .data-category h4 { color: #F97316; }
+        .programming-category h4 { color: #22C55E; }
+        .devops-category h4 { color: #A855F7; }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tags span {
+            padding: 6px 10px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.7rem;
+        }
+
+                /* Carousel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(56,189,248,0.12), rgba(129,140,248,0.08));
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+                .carousel-dots {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .dot.active {
+            background: #38bdf8;
+            transform: scale(1.2);
+        }
+
+                .projects-domains-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .projects-domains-wrapper > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projects-domains-wrapper .card {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .domains {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .domain-pill {
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: rgba(129,140,248,0.15);
+            border: 1px solid rgba(129,140,248,0.3);
+            font-size: 0.8rem;
+        }
+
+        @media(max-width:900px){
+            .projects-domains-wrapper{
+                grid-template-columns: 1fr;
+            }
+        }
+
+                                /* Floating Enterprise Logos */
+        .logo-strip {
+            position: fixed;
+            top: 75px;
+            right: 40px;
+            display: flex;
+            gap: 28px;
+            z-index: 900;
+        }
+
+        .logo-strip a {
+            display: inline-block;
+            animation: floatLogos 6s ease-in-out infinite;
+        }
+
+        .logo-strip a:nth-child(2) { animation-delay: 1s; }
+        .logo-strip a:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes floatLogos {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo-strip svg {
+            height: 26px;
+            transition: 0.4s ease;
+            opacity: 0.9;
+        }
+
+        .logo-strip a:hover svg {
+            transform: scale(1.12);
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:768px) {
+            .logo-strip { display:none; }
+
+            section { padding: 28px 6% 20px; }
+            header { padding: 100px 20px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<canvas id="particles"></canvas>
+
+<div class="navbar">
+    <div><strong>HS</strong></div>
+    <div>
+        <a href="#summary">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+    </div>
+</div>
+
+<header>
+    <h1>Himanshu Singh</h1>
+    <p>Senior Data Engineer | GCP | BigQuery | Spark | Cloud Architect</p>
+    <p>Gurugram, Haryana, India</p>
+    <p>
+        <a href="mailto:Himanshusingh1974@hotmail.com">Email</a> |
+        <a href="https://linkedin.com/in/himanshu-singh-1b13a2107" target="_blank">LinkedIn</a>
+    </p>
+
+    <div class="badges">
+        <div class="badge"><span class="metric-number" data-target="10">0</span>TB+ Daily</div>
+        <div class="badge"><span class="metric-number" data-target="99.9">0</span>% Uptime</div>
+        <div class="badge"><span class="metric-number" data-target="80">0</span>% Improvement</div>
+    </div>
+
+    <div style="margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+        
+        <!-- GCP Group -->
+        <div style="font-size:0.7rem; letter-spacing:1.5px; text-transform:uppercase; color:#38bdf8; opacity:0.8;">Google Cloud Certifications</div>
+        <div class="badges" style="margin-top:4px;">
+            <div class="badge cert-badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35);">☁ Professional Cloud Architect (2025)</div>
+            <div class="badge cert-badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35);">☁ Professional Data Engineer (2023)</div>
+            <div class="badge cert-badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35);">☁ Associate Cloud Engineer (2021)</div>
+        </div>
+
+        <!-- Azure Group -->
+        <div style="font-size:0.7rem; letter-spacing:1.5px; text-transform:uppercase; color:#0078D4; opacity:0.9; margin-top:6px;">Microsoft Azure Certification</div>
+        <div class="badges" style="margin-top:4px;">
+            <div class="badge cert-badge" style="background:rgba(0,120,212,0.18); border:1px solid rgba(0,120,212,0.45);">🟦 Microsoft Fabric Data Engineer (2026)</div>
+        </div>
+    </div>
+</header>
+
+<section id="summary" class="reveal">
+    <h2>Professional Summary</h2>
+
+    <div class="card" style="border-left:4px solid #38bdf8;">
+        <!-- Version A: Sharp & Executive -->
+        <p style="font-size:1rem; line-height:1.7; font-weight:500;">
+            Senior Data Engineer and Cloud Architect with <strong>7+ years of experience</strong>
+            building enterprise-grade data platforms on <strong>Google Cloud and Azure</strong>.
+            Architected high-scale systems processing <strong>10TB+ data daily</strong> with
+            <strong>99.9% reliability</strong> and measurable <strong>80% performance improvements</strong>.
+        </p>
+
+        <p style="margin-top:14px; color:#cbd5e1; line-height:1.7;">
+            Specialized in large-scale cloud migrations, metadata-driven orchestration,
+            real-time monitoring architectures, and performance optimization across
+            Banking, CPG, Insurance, and Healthcare domains.
+        </p>
+
+        <div style="margin-top:18px; display:flex; flex-wrap:wrap; gap:10px;">
+            <div class="impact-badge">Cloud-Native Architecture</div>
+            <div class="impact-badge">Enterprise Migrations</div>
+            <div class="impact-badge">Distributed Systems</div>
+            <div class="impact-badge">Multi-Cloud Expertise</div>
+            <div class="impact-badge">Technical Leadership</div>
+        </div>
+    </div>
+
+    <!-- Version B (Alternative - Commented Out for Comparison)
+    <div class="card" style="margin-top:20px; border-left:4px solid #818cf8;">
+        <p style="font-size:1rem; line-height:1.7;">
+            Results-driven Data Engineer focused on designing scalable, cost-efficient
+            cloud-native data ecosystems. Delivered enterprise transformations from
+            legacy Hadoop and SQL systems to modern <strong>BigQuery + Dataproc</strong>
+            architectures, improving performance by up to <strong>80%</strong>.
+        </p>
+
+        <p style="margin-top:14px; color:#cbd5e1; line-height:1.7;">
+            Passionate about building resilient data platforms, automating orchestration,
+            and enabling business intelligence at scale through clean architecture and
+            strong engineering practices.
+        </p>
+    </div>
+    -->
+
+</section>
+
+<section id="skills" class="reveal">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+
+        <div class="skill-category cloud-category">
+            <h4>Cloud Platforms</h4>
+            <div class="skill-tags">
+                <span>Google Cloud Platform</span>
+                <span>Microsoft Azure</span>
+                <span>BigQuery</span>
+                <span>Dataproc</span>
+                <span>Composer</span>
+                <span>Dataflow</span>
+                <span>Pub/Sub</span>
+            </div>
+        </div>
+
+        <div class="skill-category data-category">
+            <h4>Data Engineering</h4>
+            <div class="skill-tags">
+                <span>Apache Spark</span>
+                <span>PySpark</span>
+                <span>Airflow</span>
+                <span>ETL / ELT</span>
+                <span>Data Warehousing</span>
+                <span>Dimensional Modeling</span>
+            </div>
+        </div>
+
+        <div class="skill-category programming-category">
+            <h4>Programming</h4>
+            <div class="skill-tags">
+                <span>Python</span>
+                <span>SQL</span>
+                <span>FastAPI</span>
+                <span>REST APIs</span>
+            </div>
+        </div>
+
+        <div class="skill-category devops-category">
+            <h4>DevOps & Observability</h4>
+            <div class="skill-tags">
+                <span>CI/CD</span>
+                <span>OpenTelemetry</span>
+                <span>Monitoring</span>
+                <span>Automation</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="projects" class="reveal">
+    <div class="projects-domains-wrapper">
+        
+        <!-- LEFT: Projects -->
+        <div>
+            <h2>Key Projects</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-item">
+                        <h3>GCP Migration Framework</h3>
+                        <p>End-to-end cloud-native migration of legacy workloads using BigQuery, Composer, and Dataproc.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>Automated DAG Generator</h3>
+                        <p>Dynamic DAG creation system driven by BigQuery metadata inputs.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>Real-Time Monitoring System</h3>
+                        <p>Event-driven architecture leveraging Pub/Sub for monitoring and incident generation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Domains -->
+        <div>
+            <h2>Domain Experience</h2>
+            <div class="card">
+                <div class="domains">
+                    <div class="domain-pill">🏦 Banking & FinTech</div>
+                    <div class="domain-pill">🛒 CPG</div>
+                    <div class="domain-pill">🛡 Insurance</div>
+                    <div class="domain-pill">🏥 Healthcare</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="experience" class="reveal">
+    <h2>Professional Experience</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-card" id="ibm-card" style="border-left-color:#0F62FE;">
+                <div class="experience-header">
+                    <div class="role">IBM India – Senior Data Engineer <span class="current-badge">Currently</span></div>
+                    <div class="timeline-date">2024 – Present</div>
+                </div>
+                <div class="impact-badges">
+                    <div class="impact-badge">10TB+ Daily</div>
+                    <div class="impact-badge">99.9% Uptime</div>
+                    <div class="impact-badge">80% Performance ↑</div>
+                </div>
+                <div style="margin-bottom:10px; font-size:0.75rem; color:#94a3b8;">Tech Stack: GCP • BigQuery • Composer • Dataproc • Pub/Sub</div>
+                <ul>
+                    <li>Led migration of complex SQL parsing utilities and legacy workloads to GCP, expanding parsing coverage to 80%+ and improving execution performance.</li>
+                    <li>Designed and implemented scalable data frameworks processing 10TB+ daily with 99.9% operational uptime.</li>
+                    <li>Built automated DAG generation frameworks leveraging BigQuery metadata, reducing manual orchestration effort by over 70%.</li>
+                    <li>Implemented real-time monitoring and alerting architecture using Pub/Sub and event-driven patterns for proactive incident management.</li>
+                    <li>Provided technical leadership in cloud-native design, performance optimization, and cost-efficient data architecture.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-card" id="atos-card" style="border-left-color:#FF0000;">
+                <div class="experience-header">
+                    <div class="role">Maven Wave (Atos) – Senior Data Specialist</div>
+                    <div class="timeline-date">2023 – 2024</div>
+                </div>
+                <div class="impact-badges">
+                    <div class="impact-badge">25% Cost ↓</div>
+                </div>
+                <div style="margin-bottom:10px; font-size:0.75rem; color:#94a3b8;">Tech Stack: GCP • SQL Server • FastAPI • ELT Modernization</div>
+                <ul>
+                    <li>Led large-scale SQL Server to GCP migration initiatives, achieving 25% infrastructure cost optimization.</li>
+                    <li>Designed and developed RESTful APIs using FastAPI to enable scalable microservices-based data platforms.</li>
+                    <li>Optimized complex SQL transformations and data models for high-volume analytical workloads.</li>
+                    <li>Collaborated with cross-functional teams to modernize legacy ETL systems into cloud-native ELT architectures.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-card" id="fractal-card" style="border-left-color:#00AEEF;">
+                <div class="experience-header">
+                    <div class="role">Fractal Analytics – Data Engineer</div>
+                    <div class="timeline-date">2021 – 2023</div>
+                </div>
+                <div class="impact-badges">
+                    <div class="impact-badge">35% Faster Pipelines</div>
+                </div>
+                <div style="margin-bottom:10px; font-size:0.75rem; color:#94a3b8;">Tech Stack: GCP • BigQuery • Dataproc • PySpark • CI/CD</div>
+                <ul>
+                    <li>Migrated Hadoop-based workloads to GCP ecosystem including BigQuery and Dataproc, improving performance by 35%.</li>
+                    <li>Developed scalable PySpark pipelines for business-critical KPIs and advanced analytics use cases.</li>
+                    <li>Implemented CI/CD pipelines for data workflows, enhancing deployment reliability and reducing manual errors.</li>
+                    <li>Partnered with stakeholders across banking and CPG domains to deliver data-driven insights.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-card" style="border-left-color:#818cf8;">
+                <div class="experience-header">
+                    <div class="role">Customer Centria – Junior Solution Consultant</div>
+                    <div class="timeline-date">2018 – 2021</div>
+                </div>
+                <ul>
+                    <li>Automated ETL pipelines and enterprise reporting solutions to streamline business intelligence workflows.</li>
+                    <li>Led Oracle to AWS Redshift migration projects, improving query performance and scalability.</li>
+                    <li>Worked extensively on dimensional modeling, OLAP systems, and performance tuning for large datasets.</li>
+                    <li>Collaborated with business teams to translate analytical requirements into scalable technical solutions.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="reveal" id="education">
+    <h2>Education & Certifications</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        
+        <!-- Education Block -->
+        <div class="card" style="border-left:4px solid #22C55E;">
+            <div style="font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; color:#22C55E; margin-bottom:8px;">Education</div>
+            <div style="font-weight:600; font-size:1rem;">B.Tech – Computer Science & Engineering</div>
+            <div style="color:#94a3b8; font-size:0.85rem; margin-top:4px;">Lovely Professional University</div>
+            <div style="color:#64748b; font-size:0.75rem; margin-top:2px;">2015 – 2019</div>
+        </div>
+
+        <!-- Certifications Timeline Block -->
+        <div class="card" style="border-left:4px solid #38bdf8;">
+            <div style="font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; color:#38bdf8; margin-bottom:18px;">Professional Certifications Timeline</div>
+
+            <div class="cert-timeline">
+                <div class="cert-line"></div>
+
+                <div class="cert-item">
+                    <div class="cert-year">2021</div>
+                    <div class="cert-dot"></div>
+                    <div class="cert-name">☁ Associate Cloud Engineer</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-year">2023</div>
+                    <div class="cert-dot"></div>
+                    <div class="cert-name">☁ Professional Data Engineer</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-year">2025</div>
+                    <div class="cert-dot"></div>
+                    <div class="cert-name">☁ Professional Cloud Architect</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-year">2026</div>
+                    <div class="cert-dot azure"></div>
+                    <div class="cert-name">🟦 Microsoft Fabric Data Engineer</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<div class="logo-strip">
+    <a href="#experience" aria-label="IBM">
+        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Arial Black, Arial" font-size="28" fill="#0F62FE">IBM</text>
+        </svg>
+    </a>
+    <a href="#experience" aria-label="Atos">
+        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Arial, Helvetica" font-size="26" fill="#FF0000" font-weight="700">Atos</text>
+        </svg>
+    </a>
+    <a href="#experience" aria-label="Fractal" onclick="highlightFractal()">
+        <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Arial, Helvetica" font-size="24" fill="#00AEEF" font-weight="700">Fractal</text>
+        </svg>
+    </a>
+</div>
+
+<footer>
+    © 2026 Himanshu Singh | Built with HTML & CSS
+</footer>
+
+<!-- Strong CTA Section -->
+<section id="cta" class="reveal" style="text-align:center; padding:60px 12%;">
+    <h2 style="font-size:1.8rem; margin-bottom:14px;">Let’s Build Scalable Systems Together</h2>
+    <p style="color:#94a3b8; margin-bottom:24px;">Open to Senior Data Engineering, Cloud Architect roles, and high-impact consulting engagements.</p>
+    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="mailto:Himanshusingh1974@hotmail.com" style="padding:12px 22px; border-radius:12px; background:linear-gradient(90deg,#38bdf8,#818cf8); color:#0b1120; font-weight:600; text-decoration:none;">Contact Me</a>
+        <a href="#" style="padding:12px 22px; border-radius:12px; border:1px solid rgba(255,255,255,0.2); color:#f1f5f9; text-decoration:none;">Download Resume</a>
+    </div>
+</section>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Himanshu Singh",
+  "jobTitle": "Senior Data Engineer",
+  "url": "https://yourdomain.com",
+  "sameAs": [
+    "https://linkedin.com/in/himanshu-singh-1b13a2107"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "IBM"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Lovely Professional University"
+  }
+}
+</script>
+
+<script>
+// Scroll Progress Bar
+window.onscroll = function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+};
+
+// Scroll Reveal
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 60) {
+            el.classList.add('active');
+        }
+    });
+});
+
+// Animated Counters
+const counters = document.querySelectorAll('.metric-number');
+const speed = 100;
+
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const count = parseFloat(counter.innerText);
+        const increment = target / speed;
+
+        if (count < target) {
+            counter.innerText = (count + increment).toFixed(1);
+            setTimeout(updateCount, 20);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    updateCount();
+});
+
+// Particles Background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+for (let i = 0; i < 50; i++) {
+    particlesArray.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.fillStyle = 'rgba(56,189,248,0.3)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+// Carousel Logic with Auto Slide + Pause
+let currentSlide = 0;
+const track = document.getElementById('carouselTrack');
+const dots = document.querySelectorAll('.dot');
+let autoSlide = setInterval(() => moveSlide(1), 4000);
+
+function updateDots() {
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+}
+
+function moveSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-item');
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+}
+
+// Pause on hover
+track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+track.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => moveSlide(1), 4000);
+});
+
+// Highlight Fractal Experience
+function highlightFractal() {
+    setTimeout(() => {
+        const fractalCard = document.getElementById('fractal-card');
+        if (fractalCard) {
+            fractalCard.classList.add('highlight-card');
+            setTimeout(() => {
+                fractalCard.classList.remove('highlight-card');
+            }, 3600);
+        }
+    }, 500);
+}
+</script>
+
+</body>
+</html>
